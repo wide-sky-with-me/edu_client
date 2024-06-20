@@ -1,0 +1,2269 @@
+{
+    "nodes": [
+        {
+            "id": "0",
+            "label": "全书",
+            "properties": {
+                "name": "全书"
+            }
+        },
+        {
+            "id": "1",
+            "label": "第1章  概   述",
+            "properties": {
+                "name": "第1章  概   述"
+            }
+        },
+        {
+            "id": "2",
+            "label": "计算机网络在信息时代的作用 因特网的发展阶段 因特网的分类 计算机网络的性能指标 计算机网络在我国的发展 计算机网络的类别 计算机网络的体系结构",
+            "properties": {
+                "name": "计算机网络在信息时代的作用 因特网的发展阶段 因特网的分类 计算机网络的性能指标 计算机网络在我国的发展 计算机网络的类别 计算机网络的体系结构"
+            }
+        },
+        {
+            "id": "3",
+            "label": "本章最重要的内容",
+            "properties": {
+                "name": "本章最重要的内容"
+            }
+        },
+        {
+            "id": "4",
+            "label": "因特网的边缘部分和核心部分的作用",
+            "properties": {
+                "name": "因特网的边缘部分和核心部分的作用"
+            }
+        },
+        {
+            "id": "5",
+            "label": "网络性能指标的概念",
+            "properties": {
+                "name": "网络性能指标的概念"
+            }
+        },
+        {
+            "id": "6",
+            "label": "计算机网络的体系结构",
+            "properties": {
+                "name": "计算机网络的体系结构"
+            }
+        },
+        {
+            "id": "7",
+            "label": "抽象概念的学习",
+            "properties": {
+                "name": "抽象概念的学习"
+            }
+        },
+        {
+            "id": "8",
+            "label": "1 计算机网络在信息时代中的作用",
+            "properties": {
+                "name": "1 计算机网络在信息时代中的作用"
+            }
+        },
+        {
+            "id": "9",
+            "label": "数字化、网络化和信息化是 21 世纪的重要特征",
+            "properties": {
+                "name": "数字化、网络化和信息化是 21 世纪的重要特征"
+            }
+        },
+        {
+            "id": "10",
+            "label": "网络的概念 网络的种类",
+            "properties": {
+                "name": "网络的概念 网络的种类"
+            }
+        },
+        {
+            "id": "11",
+            "label": "网络融合的概念 网络融合的现状和问题",
+            "properties": {
+                "name": "网络融合的概念 网络融合的现状和问题"
+            }
+        },
+        {
+            "id": "12",
+            "label": "因特网的快速发展 因特网的商业化趋势",
+            "properties": {
+                "name": "因特网的快速发展 因特网的商业化趋势"
+            }
+        },
+        {
+            "id": "13",
+            "label": "因特网的重要性",
+            "properties": {
+                "name": "因特网的重要性"
+            }
+        },
+        {
+            "id": "14",
+            "label": "因特网在人们的工作、学习和交往中发挥着重要作用",
+            "properties": {
+                "name": "因特网在人们的工作、学习和交往中发挥着重要作用"
+            }
+        },
+        {
+            "id": "15",
+            "label": "计算机网络的定义和作用",
+            "properties": {
+                "name": "计算机网络的定义和作用"
+            }
+        },
+        {
+            "id": "16",
+            "label": "网络通信的资源共享功能 网络通信的远程控制功能",
+            "properties": {
+                "name": "网络通信的资源共享功能 网络通信的远程控制功能"
+            }
+        },
+        {
+            "id": "17",
+            "label": "连通性",
+            "properties": {
+                "name": "连通性"
+            }
+        },
+        {
+            "id": "18",
+            "label": " 共享",
+            "properties": {
+                "name": " 共享"
+            }
+        },
+        {
+            "id": "19",
+            "label": "连通性(connectivity)的定义",
+            "properties": {
+                "name": "连通性(connectivity)的定义"
+            }
+        },
+        {
+            "id": "20",
+            "label": "资源共享的含义",
+            "properties": {
+                "name": "资源共享的含义"
+            }
+        },
+        {
+            "id": "21",
+            "label": "计算机网络故障的影响",
+            "properties": {
+                "name": "计算机网络故障的影响"
+            }
+        },
+        {
+            "id": "22",
+            "label": "计算机网络提供的多种服务 网络游戏已经成为年轻人喜爱的娱乐方式",
+            "properties": {
+                "name": "计算机网络提供的多种服务 网络游戏已经成为年轻人喜爱的娱乐方式"
+            }
+        },
+        {
+            "id": "23",
+            "label": "计算机网络的负面影响 计算机网络的优点",
+            "properties": {
+                "name": "计算机网络的负面影响 计算机网络的优点"
+            }
+        },
+        {
+            "id": "24",
+            "label": "计算机网络的负面影响 计算机网络的积极作用",
+            "properties": {
+                "name": "计算机网络的负面影响 计算机网络的积极作用"
+            }
+        },
+        {
+            "id": "25",
+            "label": "因特网的介绍",
+            "properties": {
+                "name": "因特网的介绍"
+            }
+        },
+        {
+            "id": "26",
+            "label": "因特网的概述",
+            "properties": {
+                "name": "因特网的概述"
+            }
+        },
+        {
+            "id": "27",
+            "label": "1 网络的网络",
+            "properties": {
+                "name": "1 网络的网络"
+            }
+        },
+        {
+            "id": "28",
+            "label": "因特网的发展历程",
+            "properties": {
+                "name": "因特网的发展历程"
+            }
+        },
+        {
+            "id": "29",
+            "label": "网络、互联网和因特网的概念",
+            "properties": {
+                "name": "网络、互联网和因特网的概念"
+            }
+        },
+        {
+            "id": "30",
+            "label": "网络的定义和组成部分 网络的实例",
+            "properties": {
+                "name": "网络的定义和组成部分 网络的实例"
+            }
+        },
+        {
+            "id": "31",
+            "label": "网络的构成",
+            "properties": {
+                "name": "网络的构成"
+            }
+        },
+        {
+            "id": "32",
+            "label": "路由器的作用",
+            "properties": {
+                "name": "路由器的作用"
+            }
+        },
+        {
+            "id": "33",
+            "label": "互联网的定义 互联网的组成",
+            "properties": {
+                "name": "互联网的定义 互联网的组成"
+            }
+        },
+        {
+            "id": "34",
+            "label": "因特网的定义 因特网的组成",
+            "properties": {
+                "name": "因特网的定义 因特网的组成"
+            }
+        },
+        {
+            "id": "35",
+            "label": "因特网与连接的主机",
+            "properties": {
+                "name": "因特网与连接的主机"
+            }
+        },
+        {
+            "id": "36",
+            "label": " “互连”和“互联” 的含义",
+            "properties": {
+                "name": " “互连”和“互联” 的含义"
+            }
+        },
+        {
+            "id": "37",
+            "label": "因此，我们可以先初步建立这样的基本概念：",
+            "properties": {
+                "name": "因此，我们可以先初步建立这样的基本概念："
+            }
+        },
+        {
+            "id": "38",
+            "label": "因特网和互联网的关系",
+            "properties": {
+                "name": "因特网和互联网的关系"
+            }
+        },
+        {
+            "id": "39",
+            "label": "网络互连的定义 网络互连的作用",
+            "properties": {
+                "name": "网络互连的定义 网络互连的作用"
+            }
+        },
+        {
+            "id": "40",
+            "label": "是的，我同意",
+            "properties": {
+                "name": "是的，我同意"
+            }
+        },
+        {
+            "id": "41",
+            "label": "因特网发展的三个阶段",
+            "properties": {
+                "name": "因特网发展的三个阶段"
+            }
+        },
+        {
+            "id": "42",
+            "label": "因特网的发展历程",
+            "properties": {
+                "name": "因特网的发展历程"
+            }
+        },
+        {
+            "id": "43",
+            "label": " ARPANET的实验任务",
+            "properties": {
+                "name": " ARPANET的实验任务"
+            }
+        },
+        {
+            "id": "44",
+            "label": "因特网（Internet）和互联网（Internet）",
+            "properties": {
+                "name": "因特网（Internet）和互联网（Internet）"
+            }
+        },
+        {
+            "id": "45",
+            "label": "互联网或互连网的定义 互联网或互连网的通信规则",
+            "properties": {
+                "name": "互联网或互连网的定义 互联网或互连网的通信规则"
+            }
+        },
+        {
+            "id": "46",
+            "label": "Internet的定义",
+            "properties": {
+                "name": "Internet的定义"
+            }
+        },
+        {
+            "id": "47",
+            "label": " NSFNET的特点",
+            "properties": {
+                "name": " NSFNET的特点"
+            }
+        },
+        {
+            "id": "48",
+            "label": "第三阶段的特点 ISP的概念",
+            "properties": {
+                "name": "第三阶段的特点 ISP的概念"
+            }
+        },
+        {
+            "id": "49",
+            "label": "ISP的定义",
+            "properties": {
+                "name": "ISP的定义"
+            }
+        },
+        {
+            "id": "50",
+            "label": " IP 地址的分配和管理  IP 地址的租用和购买",
+            "properties": {
+                "name": " IP 地址的分配和管理  IP 地址的租用和购买"
+            }
+        },
+        {
+            "id": "51",
+            "label": "用户通过ISP接入因特网",
+            "properties": {
+                "name": "用户通过ISP接入因特网"
+            }
+        },
+        {
+            "id": "52",
+            "label": " ISP 的层次结构",
+            "properties": {
+                "name": " ISP 的层次结构"
+            }
+        },
+        {
+            "id": "53",
+            "label": "ISP的概念 ISP的组成",
+            "properties": {
+                "name": "ISP的概念 ISP的组成"
+            }
+        },
+        {
+            "id": "54",
+            "label": "地区ISP的定义和作用",
+            "properties": {
+                "name": "地区ISP的定义和作用"
+            }
+        },
+        {
+            "id": "55",
+            "label": "本地ISP的定义和作用",
+            "properties": {
+                "name": "本地ISP的定义和作用"
+            }
+        },
+        {
+            "id": "56",
+            "label": " ISP 结构的示意图",
+            "properties": {
+                "name": " ISP 结构的示意图"
+            }
+        },
+        {
+            "id": "57",
+            "label": "IXP的产生背景",
+            "properties": {
+                "name": "IXP的产生背景"
+            }
+        },
+        {
+            "id": "58",
+            "label": "第2章  物理层",
+            "properties": {
+                "name": "第2章  物理层"
+            }
+        },
+        {
+            "id": "59",
+            "label": "物理层的基本概念 数据通信的重要概念和传输媒体的特点 信道复用技术 数字传输系统 宽带接入技术",
+            "properties": {
+                "name": "物理层的基本概念 数据通信的重要概念和传输媒体的特点 信道复用技术 数字传输系统 宽带接入技术"
+            }
+        },
+        {
+            "id": "60",
+            "label": "本章讨论的问题不属于计算机网络的范畴",
+            "properties": {
+                "name": "本章讨论的问题不属于计算机网络的范畴"
+            }
+        },
+        {
+            "id": "61",
+            "label": "本章最重要的内容",
+            "properties": {
+                "name": "本章最重要的内容"
+            }
+        },
+        {
+            "id": "62",
+            "label": "物理层的主要任务",
+            "properties": {
+                "name": "物理层的主要任务"
+            }
+        },
+        {
+            "id": "63",
+            "label": " 常用的信道复用技术",
+            "properties": {
+                "name": " 常用的信道复用技术"
+            }
+        },
+        {
+            "id": "64",
+            "label": "几种常用的宽带接入技术",
+            "properties": {
+                "name": "几种常用的宽带接入技术"
+            }
+        },
+        {
+            "id": "65",
+            "label": "物理层的基本概念",
+            "properties": {
+                "name": "物理层的基本概念"
+            }
+        },
+        {
+            "id": "66",
+            "label": "物理层的作用",
+            "properties": {
+                "name": "物理层的作用"
+            }
+        },
+        {
+            "id": "67",
+            "label": "物理层的主要任务描述",
+            "properties": {
+                "name": "物理层的主要任务描述"
+            }
+        },
+        {
+            "id": "68",
+            "label": "接口的机械特性",
+            "properties": {
+                "name": "接口的机械特性"
+            }
+        },
+        {
+            "id": "69",
+            "label": "电气特性指明在接口电缆的各条线上出现的电压的范围",
+            "properties": {
+                "name": "电气特性指明在接口电缆的各条线上出现的电压的范围"
+            }
+        },
+        {
+            "id": "70",
+            "label": "功能特性",
+            "properties": {
+                "name": "功能特性"
+            }
+        },
+        {
+            "id": "71",
+            "label": "过程特性是指明对于不同功能的各种可能事件的出现顺序。",
+            "properties": {
+                "name": "过程特性是指明对于不同功能的各种可能事件的出现顺序。"
+            }
+        },
+        {
+            "id": "72",
+            "label": "串行传输方式和并行传输方式的概念",
+            "properties": {
+                "name": "串行传输方式和并行传输方式的概念"
+            }
+        },
+        {
+            "id": "73",
+            "label": "物理层协议的种类",
+            "properties": {
+                "name": "物理层协议的种类"
+            }
+        },
+        {
+            "id": "74",
+            "label": "现代通信的一些基本知识",
+            "properties": {
+                "name": "现代通信的一些基本知识"
+            }
+        },
+        {
+            "id": "75",
+            "label": "数据通信的概念",
+            "properties": {
+                "name": "数据通信的概念"
+            }
+        },
+        {
+            "id": "76",
+            "label": "1 数据通信系统的模型",
+            "properties": {
+                "name": "1 数据通信系统的模型"
+            }
+        },
+        {
+            "id": "77",
+            "label": "数据通信系统的模型 例子",
+            "properties": {
+                "name": "数据通信系统的模型 例子"
+            }
+        },
+        {
+            "id": "78",
+            "label": "数据通信系统的组成 数据通信系统的功能",
+            "properties": {
+                "name": "数据通信系统的组成 数据通信系统的功能"
+            }
+        },
+        {
+            "id": "79",
+            "label": "数据传输过程",
+            "properties": {
+                "name": "数据传输过程"
+            }
+        },
+        {
+            "id": "80",
+            "label": "数据通信系统的模型",
+            "properties": {
+                "name": "数据通信系统的模型"
+            }
+        },
+        {
+            "id": "81",
+            "label": "源系统的组成",
+            "properties": {
+                "name": "源系统的组成"
+            }
+        },
+        {
+            "id": "82",
+            "label": "源点设备产生要传输的数据",
+            "properties": {
+                "name": "源点设备产生要传输的数据"
+            }
+        },
+        {
+            "id": "83",
+            "label": "发送器的作用",
+            "properties": {
+                "name": "发送器的作用"
+            }
+        },
+        {
+            "id": "84",
+            "label": "目的系统的组成",
+            "properties": {
+                "name": "目的系统的组成"
+            }
+        },
+        {
+            "id": "85",
+            "label": "接收器的作用",
+            "properties": {
+                "name": "接收器的作用"
+            }
+        },
+        {
+            "id": "86",
+            "label": "终点设备从接收器获取传送来的数字比特流，然后把信息输出",
+            "properties": {
+                "name": "终点设备从接收器获取传送来的数字比特流，然后把信息输出"
+            }
+        },
+        {
+            "id": "87",
+            "label": "源系统与目的系统之间的传输系统",
+            "properties": {
+                "name": "源系统与目的系统之间的传输系统"
+            }
+        },
+        {
+            "id": "88",
+            "label": "目的系统之间的复杂网络系统",
+            "properties": {
+                "name": "目的系统之间的复杂网络系统"
+            }
+        },
+        {
+            "id": "89",
+            "label": "数据通信系统的概念 数据通信系统中的要素",
+            "properties": {
+                "name": "数据通信系统的概念 数据通信系统中的要素"
+            }
+        },
+        {
+            "id": "90",
+            "label": "好的，请问有什么需要我介绍的常用术语呢？",
+            "properties": {
+                "name": "好的，请问有什么需要我介绍的常用术语呢？"
+            }
+        },
+        {
+            "id": "91",
+            "label": "通信的目的 数据和消息的关系",
+            "properties": {
+                "name": "通信的目的 数据和消息的关系"
+            }
+        },
+        {
+            "id": "92",
+            "label": "信号（signal）的定义",
+            "properties": {
+                "name": "信号（signal）的定义"
+            }
+        },
+        {
+            "id": "93",
+            "label": "根据信号中代表消息的参数的取值方式不同，信号可分为两大类：",
+            "properties": {
+                "name": "根据信号中代表消息的参数的取值方式不同，信号可分为两大类："
+            }
+        },
+        {
+            "id": "94",
+            "label": "模拟信号，或连续信号",
+            "properties": {
+                "name": "模拟信号，或连续信号"
+            }
+        },
+        {
+            "id": "95",
+            "label": "数字信号或离散信号的概念 数字信号和离散信号的区分",
+            "properties": {
+                "name": "数字信号或离散信号的概念 数字信号和离散信号的区分"
+            }
+        },
+        {
+            "id": "96",
+            "label": "二进制编码的概念",
+            "properties": {
+                "name": "二进制编码的概念"
+            }
+        },
+        {
+            "id": "97",
+            "label": "信道概念",
+            "properties": {
+                "name": "信道概念"
+            }
+        },
+        {
+            "id": "98",
+            "label": "信道的定义 信道和电路的关系",
+            "properties": {
+                "name": "信道的定义 信道和电路的关系"
+            }
+        },
+        {
+            "id": "99",
+            "label": " 通信双方信息交互的基本方式",
+            "properties": {
+                "name": " 通信双方信息交互的基本方式"
+            }
+        },
+        {
+            "id": "100",
+            "label": "单向通信的特点",
+            "properties": {
+                "name": "单向通信的特点"
+            }
+        },
+        {
+            "id": "101",
+            "label": "双向交替通信的定义",
+            "properties": {
+                "name": "双向交替通信的定义"
+            }
+        },
+        {
+            "id": "102",
+            "label": "双向同时通信的定义",
+            "properties": {
+                "name": "双向同时通信的定义"
+            }
+        },
+        {
+            "id": "103",
+            "label": "单向通信与双向通信的比较",
+            "properties": {
+                "name": "单向通信与双向通信的比较"
+            }
+        },
+        {
+            "id": "104",
+            "label": "单工和双向交替通信的关系",
+            "properties": {
+                "name": "单工和双向交替通信的关系"
+            }
+        },
+        {
+            "id": "105",
+            "label": "基带信号的概念",
+            "properties": {
+                "name": "基带信号的概念"
+            }
+        },
+        {
+            "id": "106",
+            "label": " 基带调制  带通调制",
+            "properties": {
+                "name": " 基带调制  带通调制"
+            }
+        },
+        {
+            "id": "107",
+            "label": "一个码元所携带的信息量是不固定的，而是由调制方式和编码方式决定的。",
+            "properties": {
+                "name": "一个码元所携带的信息量是不固定的，而是由调制方式和编码方式决定的。"
+            }
+        },
+        {
+            "id": "108",
+            "label": "常用编码方式",
+            "properties": {
+                "name": "常用编码方式"
+            }
+        },
+        {
+            "id": "109",
+            "label": "常用编码方式",
+            "properties": {
+                "name": "常用编码方式"
+            }
+        },
+        {
+            "id": "110",
+            "label": " 数字信号常用的编码方式",
+            "properties": {
+                "name": " 数字信号常用的编码方式"
+            }
+        },
+        {
+            "id": "111",
+            "label": " 不归零制的定义",
+            "properties": {
+                "name": " 不归零制的定义"
+            }
+        },
+        {
+            "id": "112",
+            "label": " 归零制的定义",
+            "properties": {
+                "name": " 归零制的定义"
+            }
+        },
+        {
+            "id": "113",
+            "label": "曼彻斯特编码的定义",
+            "properties": {
+                "name": "曼彻斯特编码的定义"
+            }
+        },
+        {
+            "id": "114",
+            "label": "差分曼彻斯特编码",
+            "properties": {
+                "name": "差分曼彻斯特编码"
+            }
+        },
+        {
+            "id": "115",
+            "label": "曼彻斯特编码产生的信号频率比不归零制的特点",
+            "properties": {
+                "name": "曼彻斯特编码产生的信号频率比不归零制的特点"
+            }
+        },
+        {
+            "id": "116",
+            "label": "带通调制方法",
+            "properties": {
+                "name": "带通调制方法"
+            }
+        },
+        {
+            "id": "117",
+            "label": "调制方法的作用",
+            "properties": {
+                "name": "调制方法的作用"
+            }
+        },
+        {
+            "id": "118",
+            "label": "调制方式定义",
+            "properties": {
+                "name": "调制方式定义"
+            }
+        },
+        {
+            "id": "119",
+            "label": "调幅（AM）的定义和作用",
+            "properties": {
+                "name": "调幅（AM）的定义和作用"
+            }
+        },
+        {
+            "id": "120",
+            "label": "调频的含义",
+            "properties": {
+                "name": "调频的含义"
+            }
+        },
+        {
+            "id": "121",
+            "label": "调相(PM)的定义",
+            "properties": {
+                "name": "调相(PM)的定义"
+            }
+        },
+        {
+            "id": "122",
+            "label": "正交振幅调制 QAM",
+            "properties": {
+                "name": "正交振幅调制 QAM"
+            }
+        },
+        {
+            "id": "123",
+            "label": "信道极限容量",
+            "properties": {
+                "name": "信道极限容量"
+            }
+        },
+        {
+            "id": "124",
+            "label": "第3章  数据链路层",
+            "properties": {
+                "name": "第3章  数据链路层"
+            }
+        },
+        {
+            "id": "125",
+            "label": " 数据链路层使用的信道类型",
+            "properties": {
+                "name": " 数据链路层使用的信道类型"
+            }
+        },
+        {
+            "id": "126",
+            "label": "点对点信道",
+            "properties": {
+                "name": "点对点信道"
+            }
+        },
+        {
+            "id": "127",
+            "label": "广播信道的作用",
+            "properties": {
+                "name": "广播信道的作用"
+            }
+        },
+        {
+            "id": "128",
+            "label": "局域网与网络层的关系 局域网的传输模式",
+            "properties": {
+                "name": "局域网与网络层的关系 局域网的传输模式"
+            }
+        },
+        {
+            "id": "129",
+            "label": "PPP协议简介 共享信道中的局域网和协议",
+            "properties": {
+                "name": "PPP协议简介 共享信道中的局域网和协议"
+            }
+        },
+        {
+            "id": "130",
+            "label": "本章最重要的内容",
+            "properties": {
+                "name": "本章最重要的内容"
+            }
+        },
+        {
+            "id": "131",
+            "label": "数据链路层的点对点信道和广播信道的特点 PPP协议的特点 CSMA/CD协议的特点",
+            "properties": {
+                "name": "数据链路层的点对点信道和广播信道的特点 PPP协议的特点 CSMA/CD协议的特点"
+            }
+        },
+        {
+            "id": "132",
+            "label": "数据链路层的三个基本问题：封装成帧、透明传输和差错检测。",
+            "properties": {
+                "name": "数据链路层的三个基本问题：封装成帧、透明传输和差错检测。"
+            }
+        },
+        {
+            "id": "133",
+            "label": "以太网MAC层硬件地址",
+            "properties": {
+                "name": "以太网MAC层硬件地址"
+            }
+        },
+        {
+            "id": "134",
+            "label": "适配器、转发器、集线器、网桥、以太网交换机的作用",
+            "properties": {
+                "name": "适配器、转发器、集线器、网桥、以太网交换机的作用"
+            }
+        },
+        {
+            "id": "135",
+            "label": "数据链路层的作用",
+            "properties": {
+                "name": "数据链路层的作用"
+            }
+        },
+        {
+            "id": "136",
+            "label": "数据在路由器中的流动过程",
+            "properties": {
+                "name": "数据在路由器中的流动过程"
+            }
+        },
+        {
+            "id": "137",
+            "label": "数据链路层从左向右的粗箭头",
+            "properties": {
+                "name": "数据链路层从左向右的粗箭头"
+            }
+        },
+        {
+            "id": "138",
+            "label": "链路层到R1 链路层到R2 链路层到R3",
+            "properties": {
+                "name": "链路层到R1 链路层到R2 链路层到R3"
+            }
+        },
+        {
+            "id": "139",
+            "label": "路由选择协议的种类",
+            "properties": {
+                "name": "路由选择协议的种类"
+            }
+        },
+        {
+            "id": "140",
+            "label": "数据在层次上的流动",
+            "properties": {
+                "name": "数据在层次上的流动"
+            }
+        },
+        {
+            "id": "141",
+            "label": "数据链路层的作用",
+            "properties": {
+                "name": "数据链路层的作用"
+            }
+        },
+        {
+            "id": "142",
+            "label": "数据链路层的作用",
+            "properties": {
+                "name": "数据链路层的作用"
+            }
+        },
+        {
+            "id": "143",
+            "label": "数据链路层协议的四个阶段",
+            "properties": {
+                "name": "数据链路层协议的四个阶段"
+            }
+        },
+        {
+            "id": "144",
+            "label": "数据在传输过程中的顺序",
+            "properties": {
+                "name": "数据在传输过程中的顺序"
+            }
+        },
+        {
+            "id": "145",
+            "label": "链路层协议的内容",
+            "properties": {
+                "name": "链路层协议的内容"
+            }
+        },
+        {
+            "id": "146",
+            "label": "数据链路层的作用",
+            "properties": {
+                "name": "数据链路层的作用"
+            }
+        },
+        {
+            "id": "147",
+            "label": "点对点信道和广播信道的关系",
+            "properties": {
+                "name": "点对点信道和广播信道的关系"
+            }
+        },
+        {
+            "id": "148",
+            "label": "数据链路和帧",
+            "properties": {
+                "name": "数据链路和帧"
+            }
+        },
+        {
+            "id": "149",
+            "label": "对不起，我刚才理解有误。链路和数据链路是两个不同的概念。",
+            "properties": {
+                "name": "对不起，我刚才理解有误。链路和数据链路是两个不同的概念。"
+            }
+        },
+        {
+            "id": "150",
+            "label": "链路的概念",
+            "properties": {
+                "name": "链路的概念"
+            }
+        },
+        {
+            "id": "151",
+            "label": "数据链路的概念",
+            "properties": {
+                "name": "数据链路的概念"
+            }
+        },
+        {
+            "id": "152",
+            "label": "数据链路层和物理层的功能",
+            "properties": {
+                "name": "数据链路层和物理层的功能"
+            }
+        },
+        {
+            "id": "153",
+            "label": "物理链路和逻辑链路的定义",
+            "properties": {
+                "name": "物理链路和逻辑链路的定义"
+            }
+        },
+        {
+            "id": "154",
+            "label": "早期的数据通信协议曾叫作通信规程(procedure)。 规程和协议是同义语。",
+            "properties": {
+                "name": "早期的数据通信协议曾叫作通信规程(procedure)。 规程和协议是同义语。"
+            }
+        },
+        {
+            "id": "155",
+            "label": "数据链路层的协议数据单元—— 帧",
+            "properties": {
+                "name": "数据链路层的协议数据单元—— 帧"
+            }
+        },
+        {
+            "id": "156",
+            "label": "数据链路层的作用",
+            "properties": {
+                "name": "数据链路层的作用"
+            }
+        },
+        {
+            "id": "157",
+            "label": "报文的概念",
+            "properties": {
+                "name": "报文的概念"
+            }
+        },
+        {
+            "id": "158",
+            "label": "三层模型 网络层、数据链路层和物理层之间的通信",
+            "properties": {
+                "name": "三层模型 网络层、数据链路层和物理层之间的通信"
+            }
+        },
+        {
+            "id": "159",
+            "label": "三层简化模型",
+            "properties": {
+                "name": "三层简化模型"
+            }
+        },
+        {
+            "id": "160",
+            "label": "发送                    接收",
+            "properties": {
+                "name": "发送                    接收"
+            }
+        },
+        {
+            "id": "161",
+            "label": "帧",
+            "properties": {
+                "name": "帧"
+            }
+        },
+        {
+            "id": "162",
+            "label": "数据链路层的作用",
+            "properties": {
+                "name": "数据链路层的作用"
+            }
+        },
+        {
+            "id": "163",
+            "label": "数据链路层的作用",
+            "properties": {
+                "name": "数据链路层的作用"
+            }
+        },
+        {
+            "id": "164",
+            "label": "点对点信道的数据链路层通信步骤",
+            "properties": {
+                "name": "点对点信道的数据链路层通信步骤"
+            }
+        },
+        {
+            "id": "165",
+            "label": "数据链路层的作用",
+            "properties": {
+                "name": "数据链路层的作用"
+            }
+        },
+        {
+            "id": "166",
+            "label": "数据链路层的作用",
+            "properties": {
+                "name": "数据链路层的作用"
+            }
+        },
+        {
+            "id": "167",
+            "label": "数据链路层接收到的帧的处理",
+            "properties": {
+                "name": "数据链路层接收到的帧的处理"
+            }
+        },
+        {
+            "id": "168",
+            "label": "数据链路层的功能",
+            "properties": {
+                "name": "数据链路层的功能"
+            }
+        },
+        {
+            "id": "169",
+            "label": "2 三个基本问题",
+            "properties": {
+                "name": "2 三个基本问题"
+            }
+        },
+        {
+            "id": "170",
+            "label": "封装成帧",
+            "properties": {
+                "name": "封装成帧"
+            }
+        },
+        {
+            "id": "171",
+            "label": " 封装成帧",
+            "properties": {
+                "name": " 封装成帧"
+            }
+        },
+        {
+            "id": "172",
+            "label": "帧的概念 帧的格式 帧定界的作用",
+            "properties": {
+                "name": "帧的概念 帧的格式 帧定界的作用"
+            }
+        },
+        {
+            "id": "173",
+            "label": "帧的组成",
+            "properties": {
+                "name": "帧的组成"
+            }
+        },
+        {
+            "id": "174",
+            "label": " ASCII 码的组成",
+            "properties": {
+                "name": " ASCII 码的组成"
+            }
+        },
+        {
+            "id": "175",
+            "label": "是S,O,H 三个字符。",
+            "properties": {
+                "name": "是S,O,H 三个字符。"
+            }
+        },
+        {
+            "id": "176",
+            "label": "控制字符进行帧定界的方法举例",
+            "properties": {
+                "name": "控制字符进行帧定界的方法举例"
+            }
+        },
+        {
+            "id": "177",
+            "label": "帧定界符的作用",
+            "properties": {
+                "name": "帧定界符的作用"
+            }
+        },
+        {
+            "id": "178",
+            "label": " 可打印的字符的定义",
+            "properties": {
+                "name": " 可打印的字符的定义"
+            }
+        },
+        {
+            "id": "179",
+            "label": "帧定界符的作用",
+            "properties": {
+                "name": "帧定界符的作用"
+            }
+        },
+        {
+            "id": "180",
+            "label": "SOH和EOT帧定界符",
+            "properties": {
+                "name": "SOH和EOT帧定界符"
+            }
+        },
+        {
+            "id": "181",
+            "label": " 透明传输",
+            "properties": {
+                "name": " 透明传输"
+            }
+        },
+        {
+            "id": "182",
+            "label": "数据传输的错误",
+            "properties": {
+                "name": "数据传输的错误"
+            }
+        },
+        {
+            "id": "183",
+            "label": "透明传输的概念",
+            "properties": {
+                "name": "透明传输的概念"
+            }
+        },
+        {
+            "id": "184",
+            "label": "数据链路层错误地“找到帧的边界”的情况",
+            "properties": {
+                "name": "数据链路层错误地“找到帧的边界”的情况"
+            }
+        },
+        {
+            "id": "185",
+            "label": "数据部分恰好出现与EOT 一样的代码",
+            "properties": {
+                "name": "数据部分恰好出现与EOT 一样的代码"
+            }
+        },
+        {
+            "id": "186",
+            "label": "数据传输的透明传输",
+            "properties": {
+                "name": "数据传输的透明传输"
+            }
+        },
+        {
+            "id": "187",
+            "label": "透明",
+            "properties": {
+                "name": "透明"
+            }
+        },
+        {
+            "id": "188",
+            "label": "字节填充法解决透明传输的问题",
+            "properties": {
+                "name": "字节填充法解决透明传输的问题"
+            }
+        }
+    ],
+    "links": [
+        {
+            "source": "0",
+            "target": "1",
+            "label": "include"
+        },
+        {
+            "source": "1",
+            "target": "2",
+            "label": "include"
+        },
+        {
+            "source": "1",
+            "target": "3",
+            "label": "include"
+        },
+        {
+            "source": "1",
+            "target": "4",
+            "label": "include"
+        },
+        {
+            "source": "1",
+            "target": "5",
+            "label": "include"
+        },
+        {
+            "source": "1",
+            "target": "6",
+            "label": "include"
+        },
+        {
+            "source": "1",
+            "target": "7",
+            "label": "include"
+        },
+        {
+            "source": "1",
+            "target": "8",
+            "label": "include"
+        },
+        {
+            "source": "1",
+            "target": "9",
+            "label": "include"
+        },
+        {
+            "source": "1",
+            "target": "10",
+            "label": "include"
+        },
+        {
+            "source": "1",
+            "target": "11",
+            "label": "include"
+        },
+        {
+            "source": "1",
+            "target": "12",
+            "label": "include"
+        },
+        {
+            "source": "1",
+            "target": "13",
+            "label": "include"
+        },
+        {
+            "source": "1",
+            "target": "14",
+            "label": "include"
+        },
+        {
+            "source": "1",
+            "target": "15",
+            "label": "include"
+        },
+        {
+            "source": "1",
+            "target": "16",
+            "label": "include"
+        },
+        {
+            "source": "1",
+            "target": "17",
+            "label": "include"
+        },
+        {
+            "source": "1",
+            "target": "18",
+            "label": "include"
+        },
+        {
+            "source": "1",
+            "target": "19",
+            "label": "include"
+        },
+        {
+            "source": "1",
+            "target": "20",
+            "label": "include"
+        },
+        {
+            "source": "1",
+            "target": "21",
+            "label": "include"
+        },
+        {
+            "source": "1",
+            "target": "22",
+            "label": "include"
+        },
+        {
+            "source": "1",
+            "target": "23",
+            "label": "include"
+        },
+        {
+            "source": "1",
+            "target": "24",
+            "label": "include"
+        },
+        {
+            "source": "1",
+            "target": "25",
+            "label": "include"
+        },
+        {
+            "source": "1",
+            "target": "26",
+            "label": "include"
+        },
+        {
+            "source": "1",
+            "target": "27",
+            "label": "include"
+        },
+        {
+            "source": "1",
+            "target": "28",
+            "label": "include"
+        },
+        {
+            "source": "1",
+            "target": "29",
+            "label": "include"
+        },
+        {
+            "source": "1",
+            "target": "30",
+            "label": "include"
+        },
+        {
+            "source": "1",
+            "target": "31",
+            "label": "include"
+        },
+        {
+            "source": "1",
+            "target": "32",
+            "label": "include"
+        },
+        {
+            "source": "1",
+            "target": "33",
+            "label": "include"
+        },
+        {
+            "source": "1",
+            "target": "34",
+            "label": "include"
+        },
+        {
+            "source": "1",
+            "target": "35",
+            "label": "include"
+        },
+        {
+            "source": "1",
+            "target": "36",
+            "label": "include"
+        },
+        {
+            "source": "1",
+            "target": "37",
+            "label": "include"
+        },
+        {
+            "source": "1",
+            "target": "38",
+            "label": "include"
+        },
+        {
+            "source": "1",
+            "target": "39",
+            "label": "include"
+        },
+        {
+            "source": "1",
+            "target": "40",
+            "label": "include"
+        },
+        {
+            "source": "1",
+            "target": "41",
+            "label": "include"
+        },
+        {
+            "source": "1",
+            "target": "42",
+            "label": "include"
+        },
+        {
+            "source": "1",
+            "target": "43",
+            "label": "include"
+        },
+        {
+            "source": "1",
+            "target": "44",
+            "label": "include"
+        },
+        {
+            "source": "1",
+            "target": "45",
+            "label": "include"
+        },
+        {
+            "source": "1",
+            "target": "46",
+            "label": "include"
+        },
+        {
+            "source": "1",
+            "target": "47",
+            "label": "include"
+        },
+        {
+            "source": "1",
+            "target": "48",
+            "label": "include"
+        },
+        {
+            "source": "1",
+            "target": "49",
+            "label": "include"
+        },
+        {
+            "source": "1",
+            "target": "50",
+            "label": "include"
+        },
+        {
+            "source": "1",
+            "target": "51",
+            "label": "include"
+        },
+        {
+            "source": "1",
+            "target": "52",
+            "label": "include"
+        },
+        {
+            "source": "1",
+            "target": "53",
+            "label": "include"
+        },
+        {
+            "source": "1",
+            "target": "54",
+            "label": "include"
+        },
+        {
+            "source": "1",
+            "target": "55",
+            "label": "include"
+        },
+        {
+            "source": "1",
+            "target": "56",
+            "label": "include"
+        },
+        {
+            "source": "1",
+            "target": "57",
+            "label": "include"
+        },
+        {
+            "source": "0",
+            "target": "58",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "59",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "60",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "61",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "62",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "63",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "64",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "65",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "66",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "67",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "68",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "69",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "70",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "71",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "72",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "73",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "74",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "75",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "76",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "77",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "78",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "79",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "80",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "81",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "82",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "83",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "84",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "85",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "86",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "87",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "88",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "89",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "90",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "91",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "92",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "93",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "94",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "95",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "96",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "97",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "98",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "99",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "100",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "101",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "102",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "103",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "104",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "105",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "106",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "107",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "108",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "109",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "110",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "111",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "112",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "113",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "114",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "115",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "116",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "117",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "118",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "119",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "120",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "121",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "122",
+            "label": "include"
+        },
+        {
+            "source": "58",
+            "target": "123",
+            "label": "include"
+        },
+        {
+            "source": "0",
+            "target": "124",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "125",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "126",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "127",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "128",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "129",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "130",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "131",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "132",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "133",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "134",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "135",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "136",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "137",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "138",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "139",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "140",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "141",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "142",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "143",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "144",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "145",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "146",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "147",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "148",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "149",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "150",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "151",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "152",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "153",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "154",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "155",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "156",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "157",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "158",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "159",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "160",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "161",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "162",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "163",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "164",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "165",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "166",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "167",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "168",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "169",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "170",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "171",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "172",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "173",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "174",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "175",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "176",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "177",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "178",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "179",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "180",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "181",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "182",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "183",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "184",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "185",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "186",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "187",
+            "label": "include"
+        },
+        {
+            "source": "124",
+            "target": "188",
+            "label": "include"
+        }
+    ]
+}
