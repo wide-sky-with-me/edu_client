@@ -34,7 +34,7 @@
         :style="tableWidthStyle"
         empty-text="没有数据"
         :data="chapters">
-        <!--                  <el-table-column prop="value" label="知识点" @click="show"></el-table-column>-->
+        <!--          <el-table-column prop="value" label="知识点" @click="show"></el-table-column>-->
         <el-table-column
           prop="title"
           label="章节">
@@ -44,13 +44,13 @@
               <ul v-if="row.expanded">
                 <li
                   v-for="con in row.content"
-                  :key="con.value"
+                  :key="con.point"
                   style="font-size: 17px">
                   <!-- 添加勾选框 -->
                   <el-checkbox
                     v-model="con.isChecked"
                     @change="handleCheckboxChange(row, con)"></el-checkbox>
-                  {{ con.value }}
+                  {{ con.point }}
                 </li>
               </ul>
             </div>
@@ -76,11 +76,9 @@
         </div>
         <div style="height: 480px; overflow-y: auto">
           <div v-if="selectedContent.length">
-            <pre
-              class="auto-wrap"
-              style="font-size: 16px"
-              >{{ selectedContent.join("\n") }}</pre
-            >
+            <p v-for="item in selectedContent">
+              {{ item.summary }}
+            </p>
           </div>
           <div
             v-if="fileContent"
@@ -115,6 +113,22 @@
               <el-button @click="incrementLogic">+</el-button>
             </div>
             <el-select
+              v-model="generateMode"
+              placeholder="请选择生成方式"
+              style="
+                display: inline-block;
+                margin-top: 10px;
+                box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+                width: 250px;
+              ">
+              <el-option
+                v-for="item in generateModeOptions"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value">
+              </el-option>
+            </el-select>
+            <el-select
               v-model="difficultyLevel"
               collapse-tags
               style="
@@ -125,7 +139,7 @@
               "
               placeholder="请选择生成题目的难度等级">
               <el-option
-                v-for="item in options1"
+                v-for="item in difficultyLevelOptions"
                 :key="item.value"
                 :label="item.label"
                 :value="item.value">
@@ -133,13 +147,6 @@
             </el-select>
           </div>
           <div class="buttons-container">
-            <el-button
-              size="large"
-              type="primary"
-              class="documentIpt_btn"
-              @click="submitUpload"
-              >文件上传</el-button
-            >
             <el-button
               size="large"
               type="primary"
@@ -167,13 +174,24 @@
 <script lang="ts">
 import axios from "axios";
 import { useRouter } from "vue-router";
-import { computed, reactive, ref } from "vue";
+import { Ref, computed, reactive, ref } from "vue";
 import { ElMessage, genFileId, UploadInstance, UploadProps, UploadRawFile } from "element-plus";
 import { Document, UploadFilled } from "@element-plus/icons-vue";
 import PageResult from "@/views/PageResult.vue";
+//知识点内容
+interface Con {
+  point: string;
+  text: string;
+}
+//章节
 interface Chapter {
-  content: string[];
+  content: Con[];
   title: string;
+}
+
+interface uploadCon {
+  summary: string;
+  content: string;
 }
 
 // 定义 jsonData 的类型
@@ -188,21 +206,28 @@ export default {
     // 使用 ref 定义单个响应式变量
     const showSuccessMessage = ref(false);
 
-    // 使用 reactive 定义对象或数组等复杂响应式数据
-    const options = reactive([
-      { value: "choice", label: "选择题" },
-      { value: "fill", label: "填空题" },
-      { value: "answer", label: "简答题" },
+    const questionsTypeOptions = reactive([
+      { value: "选择题", label: "选择题" },
+      { value: "填空题", label: "填空题" },
+      { value: "简答题", label: "简答题" },
     ]);
 
-    const options1 = reactive([
-      { value: "easy", label: "简单" },
-      { value: "difficult", label: "困难" },
+    const generateModeOptions = reactive([
+      { value: "text", label: "根据文本内容生成" },
+      { value: "open", label: "开放式生成" },
+    ]);
+
+    const difficultyLevelOptions = reactive([
+      { value: "简单", label: "简单" },
+      { value: "中等", label: "中等" },
+      { value: "困难", label: "困难" },
     ]);
 
     // 使用 ref 定义单个响应式变量
+    // 使用 ref 定义单个响应式变量
     const questionType = ref("");
     const difficultyLevel = ref("");
+    const generateMode = ref("");
 
     const fileContent = ref();
     const jsonData = ref<JsonData>([]);
@@ -228,46 +253,6 @@ export default {
         name: "page2",
       });
     };
-
-    // 提交上传
-    const submitUpload = async () => {
-      // 将selectedContent数组转换为用换行符分隔的字符串
-      const contentString = selectedContent.value.join("\n");
-
-      // 创建一个Blob对象，用于表示TXT文件内容
-      const blob = new Blob([contentString], { type: "text/plain" });
-
-      // 创建一个FormData实例
-      const formData = new FormData();
-      // 将Blob对象添加到FormData中，假设服务器期望一个名为'file'的文件字段
-      formData.append("file", blob, "points.txt");
-
-      // 发送POST请求到服务器
-      try {
-        const response = await fetch(`${store.apiBaseURI}/point_txt`, {
-          method: "POST",
-          body: formData,
-        });
-
-        if (!response.ok) {
-          throw new Error("文件上传失败: " + response.statusText);
-        }
-
-        // 提取响应数据（如果需要的话）
-        const data = await response.text();
-        console.log("文件上传成功:", data);
-        ElMessage.success("知识点上传成功！");
-        // 清空selectedContent（可选）
-        // selectedContent.value = [];
-
-        // 显示成功消息或更新UI（可选）
-      } catch (error) {
-        console.error("文件上传发生错误:", error);
-        ElMessage.error("知识点上传失败！");
-        // 显示错误信息或更新UI（可选）
-      }
-    };
-
     const generateQuestions = () => {
       // // 将selectedContent数组转换为用换行符分隔的字符串
       // const contentString = selectedContent.value.join('\n');
@@ -275,18 +260,13 @@ export default {
       // // 创建一个Blob对象，用于表示TXT文件内容
       // const blob = new Blob([contentString], { type: 'text/plain' });
       // 自定义上传行为
-      const formData = new FormData();
-      // formData.append('file', blob, 'points.txt');
-      formData.append("choice_count", String(choiceCount.value));
-      formData.append("fill_count", String(fillCount.value));
-      formData.append("answer_count", String(logicCount.value));
-      formData.append("level", difficultyLevel.value);
-
       axios
-        .post(`${store.apiBaseURI}/paper`, formData, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
+        .post(`${store.apiBaseURI}/paper`, {
+          choice_count: choiceCount.value,
+          fill_count: fillCount.value,
+          answer_count: logicCount.value,
+          level: difficultyLevel.value,
+          data: selectedContent.value,
         })
         .then((response) => {
           // 确保response.status是200，即请求成功
@@ -315,38 +295,35 @@ export default {
     // 处理数据
     const chapters = computed(() => {
       if (jsonData.value && jsonData.value.length > 0) {
-        return jsonData.value.map((chapter: { title: any; content: any[] }) => {
-          return {
-            title: chapter.title,
-            content: chapter.content.map((cont) => {
-              return {
-                value: cont,
-                isChecked: false,
-              };
-            }),
-          };
-        });
+        return jsonData.value;
       }
       // 如果没有数据，可以返回一个空数组或其他默认值
       return [];
     });
-    console.log("chapterschapterschapters", chapters);
     const showTopic = (row: { expanded: boolean }) => {
       row.expanded = !row.expanded;
     };
 
-    const selectedContent = ref([""]); // 用于存储选中的知识点
+    const selectedContent: Ref<uploadCon[]> = ref([]);
     // 选中取消选中
-    const handleCheckboxChange = (row: any, con: { isChecked: any; value: any }) => {
+    const handleCheckboxChange = (
+      chapter: Chapter,
+      con: Con & {
+        isChecked: boolean;
+      }
+    ) => {
       bool.value = false;
       fileContent.value = "";
       if (con.isChecked) {
         // 如果知识点被选中，则添加到selectedContent数组中
-        selectedContent.value.push(con.value);
+        selectedContent.value.push({
+          summary: con.point,
+          content: con.text,
+        });
         // console.log('selectedContentselectedContent@@',selectedContent.value)
       } else {
         // 如果知识点被取消选中，则从selectedContent数组中移除
-        const index = selectedContent.value.indexOf(con.value);
+        const index = selectedContent.value.findIndex((item) => item.summary === con.point);
         if (index !== -1) {
           selectedContent.value.splice(index, 1);
           // console.log('selectedContentselectedContent@@',selectedContent.value)
@@ -381,10 +358,12 @@ export default {
 
     return {
       store,
-      options,
-      options1,
+      questionsTypeOptions,
+      generateModeOptions,
+      difficultyLevelOptions,
       questionType,
       difficultyLevel,
+      generateMode,
       showSuccessMessage,
       goToSearchPage,
       generateQuestions,
@@ -406,7 +385,6 @@ export default {
       decrementLogic,
       incrementLogic,
       goTopage2,
-      submitUpload,
     };
   },
 };
