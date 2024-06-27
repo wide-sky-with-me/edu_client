@@ -152,13 +152,6 @@
               size="large"
               type="primary"
               class="documentIpt_btn"
-              @click="submitUpload"
-              >文件上传</el-button
-            >
-            <el-button
-              size="large"
-              type="primary"
-              class="documentIpt_btn"
               @click="generateQuestions"
               >生成题目</el-button
             >
@@ -334,44 +327,6 @@ export default {
         }
       }
     };
-    // 提交上传
-    const submitUpload = async () => {
-      // 将selectedContent数组转换为用换行符分隔的字符串
-      const contentString = selectedContent.value.join("\n");
-
-      // 创建一个Blob对象，用于表示TXT文件内容
-      const blob = new Blob([contentString], { type: "text/plain" });
-
-      // 创建一个FormData实例
-      const formData = new FormData();
-      // 将Blob对象添加到FormData中，假设服务器期望一个名为'file'的文件字段
-      formData.append("file", blob, "points.txt");
-
-      // 发送POST请求到服务器
-      try {
-        const response = await fetch(`${store.apiBaseURI}/point_txt`, {
-          method: "POST",
-          body: formData,
-        });
-
-        if (!response.ok) {
-          throw new Error("文件上传失败: " + response.statusText);
-        }
-
-        // 提取响应数据（如果需要的话）
-        const data = await response.text();
-        console.log("文件上传成功:", data);
-        ElMessage.success("知识点上传成功！");
-        // 清空selectedContent（可选）
-        // selectedContent.value = [];
-
-        // 显示成功消息或更新UI（可选）
-      } catch (error) {
-        console.error("文件上传发生错误:", error);
-        ElMessage.error("知识点上传失败！");
-        // 显示错误信息或更新UI（可选）
-      }
-    };
 
     // 题目数量变化
     // function incrementTopic() {
@@ -395,7 +350,6 @@ export default {
       // beforeUpload,
       // handleSuccess,
       // handleError,
-      submitUpload,
       generateQuestions,
       // handleFileChange,
       drawerVisible,

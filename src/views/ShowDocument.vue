@@ -390,8 +390,8 @@ export default {
         const jsonDataString = route.query.jsonData;
         // const jsonDataString = JSON.stringify(jsonSTR);
 
-        //WARN 这是测试操作
-        store.chap = jsonDataString;
+        //REVIEW 这行代码是为了测试，实际使用时应该删除
+        // store.chap = jsonDataString;
 
         if (typeof jsonDataString === "string" && jsonDataString) {
           try {
