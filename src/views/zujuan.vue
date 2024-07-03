@@ -89,28 +89,57 @@
 
         <div>
           <div class="select-container">
-            <div class="counter-container">
-              <span style="font-size: 18px; font-weight: bold">选 择 题 数 目</span>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <el-button @click="decrementChoice">-</el-button>
-              {{ choiceCount }}
-              <el-button @click="incrementChoice">+</el-button>
+            <div class="question_container">
+              <div class="counter-container">
+                <span style="font-size: 18px; font-weight: bold">选 择 题 数 目</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <el-button @click="deccc">-</el-button>
+                {{ choiceCount }}
+                <el-button @click="inccc">+</el-button>
+              </div>
+
+              <div class="counter-container">
+                <span style="font-size: 18px; font-weight: bold">选 择 题 分 数</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <el-button @click="deccs">-</el-button>
+                {{ choiceScore }}
+                <el-button @click="inccs">+</el-button>
+              </div>
             </div>
 
-            <div class="counter-container">
-              <span style="font-size: 18px; font-weight: bold">填 空 题 数 目</span>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <el-button @click="decrementFill">-</el-button>
-              {{ fillCount }}
-              <el-button @click="incrementFill">+</el-button>
-            </div>
+            <div class="question_container">
+              <div class="counter-container">
+                <span style="font-size: 18px; font-weight: bold">填 空 题 数 目</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <el-button @click="decfc">-</el-button>
+                {{ fillCount }}
+                <el-button @click="incfc">+</el-button>
+              </div>
 
-            <div class="counter-container">
-              <span style="font-size: 18px; font-weight: bold">简 答 题 数 目</span>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <el-button @click="decrementLogic">-</el-button>
-              {{ logicCount }}
-              <el-button @click="incrementLogic">+</el-button>
+              <div class="counter-container">
+                <span style="font-size: 18px; font-weight: bold">填 空 题 分 数</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <el-button @click="decfs">-</el-button>
+                {{ fillScore }}
+                <el-button @click="incfs">+</el-button>
+              </div>
+            </div>
+            <div class="question_container">
+              <div class="counter-container">
+                <span style="font-size: 18px; font-weight: bold">简 答 题 数 量</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <el-button @click="decsac">-</el-button>
+                {{ shortAnswerCount }}
+                <el-button @click="incsac">+</el-button>
+              </div>
+
+              <div class="counter-container">
+                <span style="font-size: 18px; font-weight: bold">简 答 题 分 数</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <el-button @click="decsas">-</el-button>
+                {{ shortAnswerScore }}
+                <el-button @click="incsas">+</el-button>
+              </div>
             </div>
             <el-select
               v-model="generateMode"
@@ -178,6 +207,7 @@ import { Ref, computed, reactive, ref } from "vue";
 import { ElMessage, genFileId, UploadInstance, UploadProps, UploadRawFile } from "element-plus";
 import { Document, UploadFilled } from "@element-plus/icons-vue";
 import PageResult from "@/views/PageResult.vue";
+import { useCounter } from "@/utils/useCounter";
 //知识点内容
 interface Con {
   point: string;
@@ -233,9 +263,15 @@ export default {
     const jsonData = ref<JsonData>([]);
     const bool = ref(true); // 初始条件，可以根据需要修改
 
-    const choiceCount = ref(0);
-    const fillCount = ref(0);
-    const logicCount = ref(0);
+    //每种题目的数量
+    const { count: choiceCount, increment: inccc, decrement: deccc } = useCounter(0);
+    const { count: fillCount, increment: incfc, decrement: decfc } = useCounter(0);
+    const { count: shortAnswerCount, increment: incsac, decrement: decsac } = useCounter(0);
+
+    //每种题目的分数
+    const { count: choiceScore, increment: inccs, decrement: deccs } = useCounter(0);
+    const { count: fillScore, increment: incfs, decrement: decfs } = useCounter(0);
+    const { count: shortAnswerScore, increment: incsas, decrement: decsas } = useCounter(0);
 
     // 计算表格宽度样式
     const tableWidthStyle = computed(() => ({
@@ -262,9 +298,13 @@ export default {
       // 自定义上传行为
       axios
         .post(`${store.apiBaseURI}/paper`, {
-          choice_count: choiceCount.value,
-          fill_count: fillCount.value,
-          answer_count: logicCount.value,
+          generateMode: generateMode.value,
+          choiceCount: choiceCount.value,
+          fillCount: fillCount.value,
+          shortAnswerCount: shortAnswerCount.value,
+          choiceScore: choiceScore.value,
+          fillScore: fillScore.value,
+          shortAnswerScore: shortAnswerScore.value,
           level: difficultyLevel.value,
           data: selectedContent.value,
         })
@@ -331,30 +371,15 @@ export default {
       }
     };
 
-    // 题目数量变化
-    function incrementChoice() {
-      choiceCount.value++;
-    }
-
-    function decrementChoice() {
-      if (choiceCount.value > 0) choiceCount.value--;
-    }
-
-    function incrementFill() {
-      fillCount.value++;
-    }
-
-    function decrementFill() {
-      if (fillCount.value > 0) fillCount.value--;
-    }
-
-    function incrementLogic() {
-      logicCount.value++;
-    }
-
-    function decrementLogic() {
-      if (logicCount.value > 0) logicCount.value--;
-    }
+    // 计数器
+    const increase = (variable: Ref<number>) => {
+      variable.value++;
+    };
+    const decrease = (variable: Ref<number>) => {
+      if (variable.value > 0) {
+        variable.value--;
+      }
+    };
 
     return {
       store,
@@ -377,13 +402,22 @@ export default {
       selectedContent,
       choiceCount,
       fillCount,
-      logicCount,
-      decrementChoice,
-      incrementChoice,
-      decrementFill,
-      incrementFill,
-      decrementLogic,
-      incrementLogic,
+      shortAnswerCount,
+      choiceScore,
+      fillScore,
+      shortAnswerScore,
+      inccc,
+      deccc,
+      incfc,
+      decfc,
+      incsac,
+      decsac,
+      inccs,
+      deccs,
+      incfs,
+      decfs,
+      incsas,
+      decsas,
       goTopage2,
     };
   },
@@ -560,6 +594,10 @@ export default {
     justify-content: center;
     //gap: 200px; /* 添加按钮之间的间距 */
     flex-direction: column;
+    .question_container {
+      display: flex;
+      justify-content: space-between;
+    }
   }
   //.documentIpt_btn {
   //  //margin-right: 300px;
