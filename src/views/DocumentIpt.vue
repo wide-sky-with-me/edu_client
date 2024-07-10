@@ -29,15 +29,16 @@
         class="left"
         :class="{ shifted: drawerVisible }">
         <p style="text-align: center; font-size: 28px; font-weight: bold; margin-top: 30px">
-          Uplode File
+          文件上传
         </p>
         <el-upload
           class="upload"
           ref="upload"
           drag
-          :http-request="customUpload"
+          :http-request="handleUpload"
           :auto-upload="false"
           :limit="1"
+          :before-upload="handleBeforeUpload"
           :on-exceed="handleExceed"
           :on-success="handleSuccess"
           :on-error="handleError"
@@ -55,13 +56,12 @@
             </div>
           </div>
         </el-upload>
-
         <div class="buttons-container">
           <el-button
             size="large"
             type="primary"
             class="documentIpt_btn"
-            @click="submitUpload"
+            @click="submitFile"
             >文件上传</el-button
           >
           <el-button
@@ -79,30 +79,6 @@
             >返回</el-button
           >
           <!--          <el-button size="large" type="primary" class="documentIpt_btn" @click="gotoNext">跳转</el-button>-->
-        </div>
-      </div>
-      <!-- 文档内容抽屉 ，已废弃-->
-      <div
-        class="side-panel"
-        :class="{ active: drawerVisible }">
-        <div
-          class="title-container"
-          style="position: sticky; top: 0">
-          <h2 class="title">文件预览</h2>
-          <el-button
-            class="close-btn"
-            @click="handleClose">
-            <el-icon
-              class="el-icon--close"
-              style="position: absolute; top: 0; right: 10px"
-              >×</el-icon
-            >
-          </el-button>
-        </div>
-        <div
-          v-if="fileContent"
-          class="file-content">
-          <pre>{{ fileContent }}</pre>
         </div>
       </div>
     </el-main>
@@ -173,9 +149,15 @@
 </template>
 
 <script lang="ts">
-import { computed, onBeforeUnmount, ref, watch, onMounted } from "vue";
+import { computed, onBeforeUnmount, ref, watch, onMounted, reactive } from "vue";
 import { ElMessage, genFileId } from "element-plus";
-import type { UploadInstance, UploadProps, UploadRawFile } from "element-plus";
+import type {
+  UploadFile,
+  UploadFiles,
+  UploadInstance,
+  UploadProps,
+  UploadRawFile,
+} from "element-plus";
 import { useRoute, useRouter } from "vue-router";
 import { Document, UploadFilled } from "@element-plus/icons-vue";
 import axios from "axios";
@@ -196,6 +178,7 @@ export default {
     const drawerVisible = ref(false);
     const fileContent = ref();
     const loading = ref(false);
+    const fileToUpload = ref<UploadRawFile>();
     //当前是否已经上传了文件
     const flag = ref(false);
 
@@ -219,84 +202,114 @@ export default {
      * 它会清除已上传的文件列表，为新文件分配一个唯一ID，并开始处理这个新文件。
      **/
     const handleExceed: UploadProps["onExceed"] = (files) => {
-      console.log(upload);
       upload.value!.clearFiles();
       const file = files[0] as UploadRawFile;
       file.uid = genFileId();
       upload.value!.handleStart(file);
     };
 
-    const submitUpload = () => {
-      upload.value!.submit();
-    };
-
-    // // 将教材文档发往后端
-    // const url = 'http://10.21.22.111:5000/upload';
-    // const customUpload = (options: { file: string | Blob; }) => {
-    //   // 自定义上传行为
-    //   const formData = new FormData();
-    //   formData.append('file', options.file);
-    //
-    //   return new Promise((resolve, reject) => {
-    //     fetch(url, {
-    //       method: 'POST',
-    //       body: formData
-    //     })
-    //         .then((response) => {
-    //           if (!response.ok) {
-    //             throw new Error('Network response was not ok');
-    //           }
-    //           return  response.text();
-    //         })
-    //         .then((data) => {
-    //           resolve(data);
-    //         })
-    //         .catch((error) => {
-    //           reject(error);
-    //         });
-    //   });
-    // };
-
     const urlUpload = `${store.apiBaseURI}/upload`;
     const urlChange = `${store.apiBaseURI}/#`;
 
-    const customUpload = (options: { file: any }) => {
-      return new Promise((resolve, reject) => {
-        const file = options.file;
-        if (
-          file.type === "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-        ) {
-          // .docx 类型，直接上传
-          uploadFileToUrl(file, urlUpload).then(resolve).catch(reject);
-        } else if (file.type === "application/pdf") {
-          // .pdf 类型，先转换后上传
-          changePdfToDocx(file)
-            .then((convertedFile) => {
-              uploadFileToUrl(convertedFile, urlUpload).then(resolve).catch(reject);
-            })
-            .catch(reject);
+    // 上传文件前类型的校验，只能是 .docx,dox 或 .pdf 文件
+    const handleBeforeUpload = (file: UploadRawFile) => {
+      const isDocx =
+        file.type === "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+      const isDoc = file.type === "application/msword";
+      const isPdf = file.type === "application/pdf";
+      if (!isDocx && !isPdf && !isDoc) {
+        ElMessage.error("只能上传 .docx ,.doc或 .pdf 文件");
+        return false;
+      }
+      return true;
+    };
+
+    // 切片上传
+    const sliceUpload = async function (file: UploadRawFile) {
+      const chunkSize = 1024 * 1024; // 每个块的大小为 1MB
+      const fileSize = file.size; // 文件大小
+      const chunks = Math.ceil(fileSize / chunkSize); // 总块数
+      const tasks = []; // 上传任务数组
+      let uploaded = 0; // 已上传块数
+      // 文件切割
+      for (let i = 0; i < chunks; i++) {
+        const start = i * chunkSize;
+        const end = Math.min(start + chunkSize, fileSize);
+        tasks.push(
+          new Promise((resolve, reject) => {
+            const formData = new FormData();
+            formData.append("chunk_index", `${i}`); // 块编号
+            formData.append("chunk_count", `${chunks}`); // 总块数
+            formData.append("file_id", `${file.uid}`); // 文件ID
+            formData.append("chunk_data", file.slice(start, end)); // 块数据
+            formData.append("mode", "slice"); // 上传模式
+            axios
+              .post(urlUpload, formData) // 上传块数据
+              .then((res) => {
+                uploaded++;
+                resolve("success");
+              })
+              .catch((err) => {
+                reject(err);
+              });
+          })
+        );
+      }
+      // 待所有块上传完成后，发送合并请求
+      await Promise.all(tasks);
+      const res = await axios.post(
+        urlUpload,
+        {
+          file_id: file.uid,
+          chunks: chunks,
+          filename: file.name,
+          mode: "merge",
+        },
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      // 上传成功，返回文件URL
+      if (res.status === 200) {
+        return `${urlUpload}/${file.uid}`;
+      } else {
+        throw new Error(res.data.message);
+      }
+    };
+
+    //触发文件上传
+    const submitFile = () => {
+      upload.value!.submit();
+    };
+    //上传文件
+    const handleUpload = async function () {
+      try {
+        const file = fileToUpload.value;
+        if (!file) {
+          ElMessage.warning("请先选择文件");
+          return;
+        }
+        //如果文件大小小于4MB，直接上传
+        if (file.size <= 1024 * 1024 * 4) {
+          const formData = new FormData();
+          formData.append("file", file);
+          formData.append("mode", "single");
+          await axios.post(urlUpload, formData);
         } else {
-          // 其他类型，提示不支持
-          reject(new Error("不支持的文件类型"));
+          await sliceUpload(file);
         }
-      });
+        // 文件上传成功，将url展示给用户
+        ElMessage.success(`文件${file.name}上传成功!`);
+      } catch (err) {
+        ElMessage.error("文件上传失败");
+      }
     };
-
-    const uploadFileToUrl = (file: string | Blob, url: RequestInfo) => {
-      const formData = new FormData();
-      formData.append("file", file);
-
-      return fetch(url, {
-        method: "POST",
-        body: formData,
-      }).then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.text();
-      });
+    const handleFileChange = (uploadFile: UploadFile, uploadFiles: UploadFiles) => {
+      fileToUpload.value = uploadFile.raw;
+      console.log(`fileToUpload:${uploadFile.raw!.size / 1024 / 1024}MB`);
     };
-
     const changePdfToDocx = (file: string | Blob) => {
       const formData = new FormData();
       formData.append("file", file);
@@ -313,9 +326,9 @@ export default {
     };
 
     const handleSuccess = (response: any, file: any, fileList: any) => {
-      ElMessage.success("文件上传成功！");
-      console.log(response);
       flag.value = true;
+      // 上传成功后清除文件列表
+      upload.value!.clearFiles();
     };
 
     const handleError = (err: any, file: any, fileList: any) => {
@@ -342,12 +355,6 @@ export default {
             // 跳转至顶部
             window.scrollTo(0, 0);
 
-            // 处理响应数据
-            console.log(response.data);
-
-            // 处理响应数据
-            console.log(response.data);
-
             // 将JSON数据转换为字符串
             const jsonData = JSON.stringify(response.data);
             store.chap = jsonData;
@@ -373,29 +380,6 @@ export default {
       } else {
         ElMessage.error("请先上传文件");
       }
-    };
-    const handleFileChange = (file: { raw: Blob | null }) => {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        // 确保 e.target 不是 null
-        if (e.target) {
-          fileContent.value = e.target.result;
-          // drawerVisible.value = true;
-        } else {
-          ElMessage.error("文件读取失败");
-        }
-      };
-      if (file && file.raw) {
-        reader.readAsText(file.raw);
-      } else {
-        ElMessage.error("选择的文件无效");
-      }
-    };
-
-    // 关闭抽屉
-    const handleClose = () => {
-      drawerVisible.value = false;
-      // fileContent.value = '';
     };
 
     // const images = [
@@ -457,7 +441,7 @@ export default {
           clearInterval(slowIntervalId!);
           // 可以在这里添加进度完成的后续操作
         }
-      }, 8000); // 每8秒更新一次
+      }, 4000); // 每8秒更新一次
     };
 
     onMounted(() => {
@@ -478,19 +462,20 @@ export default {
       upload,
       store,
       handleExceed,
-      submitUpload,
       goToSearchPage,
+      urlUpload,
       gotoNext,
-      customUpload,
       handleSuccess,
       handleError,
+      handleBeforeUpload,
+      handleUpload,
+      submitFile,
       submittextStructure,
       showProgressBar,
       progress,
       progressStatus,
       drawerVisible,
       fileContent,
-      handleClose,
       handleFileChange,
       showPopup,
       loading,
