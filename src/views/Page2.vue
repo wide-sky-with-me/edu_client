@@ -209,9 +209,9 @@ export default {
     // const topicCount = ref(0);
     // 使用 reactive 定义对象或数组等复杂响应式数据
     const questionsTypeOptions = reactive([
-      { value: "选择题", label: "选择题" },
-      { value: "填空题", label: "填空题" },
-      { value: "简答题", label: "简答题" },
+      { value: "choice", label: "选择题" },
+      { value: "fill", label: "填空题" },
+      { value: "answer", label: "简答题" },
     ]);
 
     const generateModeOptions = reactive([
@@ -220,9 +220,9 @@ export default {
     ]);
 
     const difficultyLevelOptions = reactive([
-      { value: "简单", label: "简单" },
-      { value: "中等", label: "中等" },
-      { value: "困难", label: "困难" },
+      { value: "easy", label: "简单" },
+      //{ value: "中等", label: "中等" },
+      { value: "difficulty", label: "困难" },
     ]);
 
     // 使用 ref 定义单个响应式变量
@@ -257,7 +257,7 @@ export default {
     const generateQuestions = () => {
       // 自定义上传行为
       axios
-        .post(`${store.apiBaseURI}/exam_item`, {
+        .post(`${store.apiBaseURI}/text_generate_question`, {
           questionType: questionType.value,
           generateMode: generateMode.value,
           difficultyLevel: difficultyLevel.value,

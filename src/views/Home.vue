@@ -117,19 +117,16 @@ export default {
 
       // 将数据转换为 JSON 字符串
       const chapJSON = JSON.parse(chapData);
-      console.log("这里是chapJSON", chapJSON);
       const chapJSONString = JSON.stringify(chapJSON);
       // 创建一个 Blob 对象，将 JSON 字符串转换为 JSON 文件
       const blob = new Blob([chapJSONString], { type: "application/json" });
 
       // 创建一个 File 对象，假设文件名为 chap.json
       const file = new File([blob], "chap.json");
-      console.log("这是file内容=======================", file);
       // 创建一个 FormData 对象
       const formData = new FormData();
       // 将 File 添加到 FormData 对象中
       formData.append("file", file);
-
       // 使用 Axios 发送 POST 请求
       axios
         .post(`${store.apiBaseURI}/web_modify_graph`, formData, {

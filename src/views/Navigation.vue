@@ -1,51 +1,60 @@
 <template>
-  <el-container  >
-    <el-header class="home_first_header" height="70px">
+  <el-container>
+    <el-header
+      class="home_first_header"
+      height="70px">
       <div class="left">教培大模型“子路”</div>
       <div class="right">
-        <el-menu :default-active="activeIndex" class="home_menu" mode="horizontal" @select="handleSelect" active-text-color="#b49c73">
-          <el-menu-item index="1" @click="toHome">首页</el-menu-item>
+        <el-menu
+          :default-active="activeIndex"
+          class="home_menu"
+          mode="horizontal"
+          @select="handleSelect"
+          active-text-color="#b49c73">
+          <el-menu-item
+            index="1"
+            @click="toHome"
+            >首页</el-menu-item
+          >
         </el-menu>
       </div>
     </el-header>
     <el-main class="home_first_main">
       <router-view></router-view>
     </el-main>
-
   </el-container>
 </template>
 
 <script lang="ts">
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { ref } from "vue";
+import { useRouter } from "vue-router";
 // import Footer from "@/views/ Footer.vue";
-import {Iphone, Notebook} from "@element-plus/icons-vue";
-
+import { Iphone, Notebook } from "@element-plus/icons-vue";
 
 export default {
-  name: 'Navigation',
-  components: { Iphone, Notebook},
+  name: "Navigation",
+  components: { Iphone, Notebook },
   // Footer},
   setup() {
-    const router = useRouter()
-    const { useStore } = require('../store/index.js')
-    const store = useStore()
+    const router = useRouter();
+    const { useStore } = require("../store/index.js");
+    const store = useStore();
 
-    const size = 20
-    const color = '#b49c73'
+    const size = 20;
+    const color = "#b49c73";
     // 导航栏默认激活项
-    const activeIndex = ref('1')
+    const activeIndex = ref("1");
     // 导航栏切换以后触发的方法
     const handleSelect = (key: string, keyPath: string[]) => {
-      console.log(key, keyPath)
-    }
+      console.log(key, keyPath);
+    };
     // 跳转首页
     const toHome = function () {
-      store.text = '课程知识图谱'
+      store.text = "课程知识图谱";
       router.push({
-        name: 'Home'
-      })
-    }
+        name: "Home",
+      });
+    };
 
     return {
       activeIndex,
@@ -54,20 +63,24 @@ export default {
       color,
       toHome,
       store,
-
-    }
-  }
-}
+    };
+  },
+};
 </script>
 
 <style scoped lang="less">
+.el-container {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+}
 .home_first_header {
   padding: 0;
   .left {
     width: 35%;
     height: 100%;
     float: left;
-    background-color:wheat;
+    background-color: wheat;
     color: #37373f;
     font-size: 54px;
     font-weight: 500;
@@ -126,11 +139,8 @@ export default {
 .home_first_main {
   padding: 0;
 }
-.inner_right img{
+.inner_right img {
   width: 3em; /* 设置图片宽度为相对于父元素字体大小的单位 */
   height: 3em; /* 设置图片高度为相对于父元素字体大小的单位 */
-
 }
-
-
 </style>

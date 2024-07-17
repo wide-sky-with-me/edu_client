@@ -358,17 +358,18 @@ export default {
             // 将JSON数据转换为字符串
             const jsonData = JSON.stringify(response.data);
             store.chap = jsonData;
-            // 使用路由参数传递数据
-            router.push({
-              name: "ShowDocument",
-              query: { jsonData }, // 使用查询参数传递JSON数据
-            });
+
             //上传完毕之后标志清空
             flag.value = false;
             // 上传成功后清除文件列表
             upload.value!.clearFiles(); //待定？？？
 
             loading.value = false;
+            // 使用路由参数传递数据
+            router.push({
+              name: "ShowDocument",
+              query: { jsonData }, // 使用查询参数传递JSON数据
+            });
           })
           .catch((error) => {
             progressStatus.value = "exception";

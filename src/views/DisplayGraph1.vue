@@ -2,7 +2,7 @@
   <el-container class="documentIpt_all">
     <el-header
       class="documentIpt_header"
-      height="180px">
+      height="200px">
       <p>{{ store.text }}</p>
       <el-breadcrumb
         class="p_bottom"
@@ -75,16 +75,21 @@ import { useRouter, useRoute } from "vue-router";
 import { Document, UploadFilled } from "@element-plus/icons-vue";
 // import Neovis from "neovis.js";
 // import DocumentIpt from "@/views/DocumentIpt.vue";
-import NeoVis from "neovis.js";
 import * as echarts from "echarts";
 // import data from '../assets/js/result_auto.json'
 import { ElMessage } from "element-plus";
 import axios from "axios";
 
-var neo4j = require("neo4j-driver");
+const neo4j = require("neo4j-driver");
 
+//知识点内容
+interface Con {
+  point: string;
+  text: string;
+}
+//章节
 interface Chapter {
-  content: string[];
+  content: Con[];
   title: string;
 }
 
@@ -104,7 +109,7 @@ export default {
     };
 
     // 定义响应式状态
-    const echartsData = ref<any[]>([]); // 用于存储处理后的数据
+    const echartsData = ref<[]>([]); // 用于存储处理后的数据
     const nodesRelation = ref<any[]>([]); // 关系线数据
     const category = ref<any[]>([]); // 图例数据
     const records = ref<any[]>([]); // 存储查询结果的数组
@@ -118,14 +123,12 @@ export default {
     // 使用computed来计算只包含content.value的字符串数组
     const contentValues = computed(() => {
       if (jsonData.value && jsonData.value.length > 0) {
-        // 使用flatMap来展平content数组，并只取value字段
-        return jsonData.value.flatMap((chapter) => chapter.content.map((cont) => cont));
+        // 使用flatMap来展平content数组，然后使用map来提取point属性
+        return jsonData.value.flatMap((chapter) => chapter.content.map((cont) => cont.point));
       }
       // 如果没有数据，返回一个空数组
       return [];
     });
-    console.log("contentValues", contentValues);
-    // 发送文本到后端并获取词云图片的URL
     // 发送文本到后端并获取词云图片的URL
     const generateWordCloud = async () => {
       try {
@@ -156,6 +159,7 @@ export default {
             text: "图谱显示",
           },
           tooltip: {
+            overflow: "truncate",
             show: true, // 显示提示框
             formatter: function (x: { dataType: string; data: { label: any } }) {
               // x参数包含触发提示框的图形的数据信息
@@ -223,8 +227,6 @@ export default {
           ],
         };
         // console.log('Links data:', option.series[0].links);
-        console.log(option.series);
-        console.log("categories", category);
         chart.setOption(option);
         console.log("ok");
         showReloadButton.value = false; // 初始化成功后，不需要显示重新加载按钮
@@ -277,8 +279,7 @@ export default {
           const data = JSON.parse(jsonDataString);
           echartsData.value = data.nodes;
           nodesRelation.value = data.links;
-          console.log("data.nodes是", data.nodes);
-          console.log("Received JSON data:", data);
+          console.log(echartsData.value);
         } catch (error) {
           console.error("Error parsing JSON data:", error);
           showReloadButton.value = true;
@@ -298,7 +299,7 @@ export default {
         }
 
         // 获取整个图表的图片 URL
-        const picUrl = chartInstance.getDataURL({
+        const picUrl = chartInstance.getConnectedDataURL({
           pixelRatio: 2, // 提高图片的分辨率
           backgroundColor: "#fff", // 设置背景色
         });
@@ -372,8 +373,8 @@ function saveAs(src: any, arg1: string) {
 
   .content_container {
     background-color: #b49c73;
-    width: 1500px;
-    height: 700px;
+    width: 100%;
+    height: 80vh;
     position: absolute; /* 使用绝对定位 */
     top: 38%;
     left: 50%;
