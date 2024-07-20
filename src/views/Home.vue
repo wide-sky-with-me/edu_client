@@ -152,27 +152,6 @@ export default {
           // 处理错误
           console.error("There was an error!", error);
         });
-
-      // axios.post('http://10.21.22.111:5000/graph')
-      //     .then(response => {
-      //
-      //       // 处理响应数据
-      //       console.log(response.data);
-      //
-      //       // 将JSON数据转换为字符串
-      //       const jsonData = JSON.stringify(response.data);
-      //       // const jsonData = response.data;
-      //
-      //       // 使用路由参数传递数据
-      //       router.push({
-      //         name: 'DisplayGraph1',
-      //         query: {jsonData} // 使用查询参数传递JSON数据
-      //       });
-      //     })
-      //     .catch(error => {
-      //       // 处理错误
-      //       console.error('There was an error!', error);
-      //     });
     };
     const toCaseSearch = function () {
       store.text = "自动出题";

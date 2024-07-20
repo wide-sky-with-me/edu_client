@@ -15,13 +15,6 @@
         <el-breadcrumb-item :to="{ path: '/' }">HOME</el-breadcrumb-item>
         <el-breadcrumb-item>FILE-UPLOAD</el-breadcrumb-item>
       </el-breadcrumb>
-      <el-button
-        size="large"
-        type="primary"
-        class="documentIpt_btn"
-        @click="drawerVisible = true">
-        <span class="long-arrow-left">←|</span>
-      </el-button>
     </el-header>
     <!--    accept=".docx"-->
     <el-main class="documentIpt_main">
@@ -56,29 +49,83 @@
             </div>
           </div>
         </el-upload>
-        <div class="buttons-container">
-          <el-button
-            size="large"
-            type="primary"
-            class="documentIpt_btn"
-            @click="submitFile"
-            >文件上传</el-button
-          >
-          <el-button
-            size="large"
-            type="primary"
-            class="documentIpt_btn"
-            @click="submittextStructure"
-            >知识点生成</el-button
-          >
-          <el-button
-            size="large"
-            type="primary"
-            class="documentIpt_btn"
-            @click="goToSearchPage"
-            >返回</el-button
-          >
-          <!--          <el-button size="large" type="primary" class="documentIpt_btn" @click="gotoNext">跳转</el-button>-->
+        <div class="actions">
+          <div class="title">
+            <h3>目录格式</h3>
+            <el-tooltip
+              content="你需要根据上传的书籍输入内容标题的格式，例如：一级标题 第1章、二级标题 1.1 1.2、三级标题 1.1.1 1.1.2"
+              placement="top">
+              <el-button
+                type="info"
+                circle
+                size="small">
+                <el-icon><Bell /></el-icon>
+              </el-button>
+            </el-tooltip>
+            <el-tooltip
+              content="添加标题"
+              placement="top">
+              <el-button
+                circle
+                @click="addHeading('')"
+                size="small"
+                type="primary">
+                <el-icon><Plus /></el-icon>
+              </el-button>
+            </el-tooltip>
+          </div>
+          <div class="pattern">
+            <template
+              :key="index"
+              v-for="(val, index) in headings">
+              <div class="heading_area">
+                <span>{{ index + 1 }}级标题:</span>
+                <el-input
+                  v-model="headings[index]"
+                  placeholder="请输入标题格式"
+                  style="width: 200px"></el-input>
+                <span
+                  v-if="index + 1 === headings.length && index !== 0"
+                  class="icons">
+                  <el-tooltip
+                    content="删除标题"
+                    placement="top">
+                    <el-button
+                      circle
+                      size="small"
+                      type="danger"
+                      @click="deleteHeading(index)">
+                      <el-icon><Close /></el-icon>
+                    </el-button>
+                  </el-tooltip>
+                </span>
+              </div>
+            </template>
+          </div>
+          <div class="buttons-container">
+            <el-button
+              size="large"
+              type="primary"
+              class="documentIpt_btn"
+              @click="submitFile"
+              >文件上传</el-button
+            >
+            <el-button
+              size="large"
+              type="primary"
+              class="documentIpt_btn"
+              @click="submittextStructure"
+              >知识点生成</el-button
+            >
+            <el-button
+              size="large"
+              type="primary"
+              class="documentIpt_btn"
+              @click="goToSearchPage"
+              >返回</el-button
+            >
+            <!--          <el-button size="large" type="primary" class="documentIpt_btn" @click="gotoNext">跳转</el-button>-->
+          </div>
         </div>
       </div>
     </el-main>
@@ -149,7 +196,7 @@
 </template>
 
 <script lang="ts">
-import { computed, onBeforeUnmount, ref, watch, onMounted, reactive } from "vue";
+import { computed, onBeforeUnmount, ref, watch, onMounted, reactive, toRaw } from "vue";
 import { ElMessage, genFileId } from "element-plus";
 import type {
   UploadFile,
@@ -159,10 +206,11 @@ import type {
   UploadRawFile,
 } from "element-plus";
 import { useRoute, useRouter } from "vue-router";
-import { Document, UploadFilled } from "@element-plus/icons-vue";
+import { Document, Plus, UploadFilled } from "@element-plus/icons-vue";
 import axios from "axios";
 
 import "../assets/css/loading.css";
+import { close } from "../nprogress/nprogress";
 
 export default {
   name: "DocumentIpt",
@@ -178,10 +226,19 @@ export default {
     const drawerVisible = ref(false);
     const fileContent = ref();
     const loading = ref(false);
+    const headings = reactive([""]);
     const fileToUpload = ref<UploadRawFile>();
     //当前是否已经上传了文件
     const flag = ref(false);
 
+    //增加标题
+    const addHeading = (val: string) => {
+      headings.push(val);
+    };
+    //删除标题
+    const deleteHeading = (index: number) => {
+      headings.splice(index, 1);
+    };
     const goToSearchPage = function () {
       router.push({
         name: "Home",
@@ -263,6 +320,7 @@ export default {
           file_id: file.uid,
           chunks: chunks,
           filename: file.name,
+          headings: toRaw(headings),
           mode: "merge",
         },
         {
@@ -281,6 +339,14 @@ export default {
 
     //触发文件上传
     const submitFile = () => {
+      if (fileToUpload.value === undefined) {
+        ElMessage.warning("请先选择文件");
+        return;
+      }
+      if (headings.length === 0 || headings[0] === "") {
+        ElMessage.warning("请添加标题");
+        return;
+      }
       upload.value!.submit();
     };
     //上传文件
@@ -296,6 +362,7 @@ export default {
           const formData = new FormData();
           formData.append("file", file);
           formData.append("mode", "single");
+          formData.append("headings", JSON.stringify(toRaw(headings)));
           await axios.post(urlUpload, formData);
         } else {
           await sliceUpload(file);
@@ -327,6 +394,7 @@ export default {
 
     const handleSuccess = (response: any, file: any, fileList: any) => {
       flag.value = true;
+      console.log("上传成功");
       // 上传成功后清除文件列表
       upload.value!.clearFiles();
     };
@@ -464,6 +532,9 @@ export default {
       store,
       handleExceed,
       goToSearchPage,
+      headings,
+      addHeading,
+      deleteHeading,
       urlUpload,
       gotoNext,
       handleSuccess,
@@ -491,6 +562,7 @@ export default {
 
 <style lang="less" scoped>
 .documentIpt_all {
+  height: calc(100vh - 70px);
   background-image: url(../assets/gr.png);
   background-size: cover;
 }
@@ -526,11 +598,6 @@ export default {
     transform: translateX(-480px); /* 原页面内容左移 */
     transition: transform 0.3s; /* 平滑过渡效果 */
   }
-  .long-arrow-left {
-    font-size: 24px; /* 设置字体大小 */
-    font-weight: bold; /* 设置字体加粗 */
-    margin-left: 5px;
-  }
   .documentIpt_btn {
     position: absolute;
     top: 100px; /* 相对于页面的右上角定位 */
@@ -543,33 +610,23 @@ export default {
   }
 }
 .documentIpt_main {
+  display: flex;
+  justify-content: center;
+  flex-grow: 0;
   padding: 0;
-  height: 460px;
-  position: relative;
   .left {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 650px;
-    height: 400px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: min(60%, 700px);
     background-color: white;
     border-radius: 5px;
+    padding: 10px;
 
     .upload {
-      //position: absolute;
-      //top: 20px;
-      //left: 50%;
-      //transform: translateX(-50%);
-      //width: 550px;
-      //height: 180px;
-      //padding: 10px;
-      position: absolute;
-      top: 80px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 500px;
-      padding: 0;
-      margin: 0;
+      width: 80%;
       border: none; /* 如果存在边框，也去除 */
       box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3); /* 你可以根据需要调整阴影的大小、颜色和模糊度 */
     }
@@ -587,6 +644,44 @@ export default {
       background-position: center center; /* 图片居中显示 */
       background-size: cover; /* 缩放图片以完全覆盖容器 */
     }
+
+    .actions {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .title {
+        display: inline-flex;
+        align-items: center;
+        h3 {
+          color: black;
+        }
+      }
+      .pattern {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        padding: 8px;
+        justify-content: flex-start;
+        gap: 10px; /* 添加标签之间的间距 */
+        .heading_area {
+          display: flex;
+          gap: 5px;
+          span {
+            font-size: 18px;
+            display: inline-flex;
+            align-items: center;
+          }
+          .icons {
+            display: flex;
+            font-size: 16px;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+          }
+        }
+      }
+    }
+
     .buttons-container {
       display: flex;
       justify-content: center;
@@ -594,7 +689,6 @@ export default {
     }
     .documentIpt_btn {
       //margin-right: 300px;
-      margin-top: 250px;
       width: 120px;
       height: 50px;
       background-color: wheat;

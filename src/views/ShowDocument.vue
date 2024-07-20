@@ -177,9 +177,6 @@ import { useRoute, useRouter } from "vue-router";
 import { Document, Plus, UploadFilled } from "@element-plus/icons-vue";
 import DocumentIpt from "@/views/DocumentIpt.vue";
 import axios from "axios";
-interface TableData {
-  value: string;
-}
 
 //知识点内容
 interface Con {
@@ -387,6 +384,7 @@ export default {
           console.warn("No data found in sessionStorage");
         }
       } else {
+        //WARN 这是测试操作
         const jsonDataString = route.query.jsonData;
         // const jsonDataString = JSON.stringify(jsonSTR);
 
@@ -411,14 +409,20 @@ export default {
     // 下载知识点文档
     const downloadJson = () => {
       // 创建一个文本字符串，每个对象占据一行
-      let textString = "";
-      jsonData.value.forEach((obj: { title: any; content: any[] }) => {
-        textString += `${obj.title}\n`;
-        obj.content.forEach((content, index) => {
-          textString += `  ${index + 1}.${content}\n`;
-        });
-        textString += "\n"; // 添加空行作为章节之间的分隔
-      });
+      let textString = jsonData.value
+        .map((chapter) => {
+          // 将章节标题和知识点内容拼接为一行文本
+          return (
+            chapter.title +
+            "\n" +
+            chapter.content
+              .map((con) => {
+                return con.point;
+              })
+              .join("\n")
+          );
+        })
+        .join("\n");
 
       // 将文本字符串转换为Blob对象
       const blob = new Blob([textString], { type: "text/plain" });
@@ -508,7 +512,7 @@ export default {
 }
 .documentIpt_main {
   padding: 0;
-  height: 600px;
+  height: 100%;
   position: relative;
   .box-card {
     border-radius: 1rem;
@@ -529,8 +533,7 @@ export default {
   .buttons-container {
     display: flex;
     justify-content: center;
-    margin-top: 50px;
-    gap: 200px; /* 添加按钮之间的间距 */
+    row-gap: 200px;
   }
   .documentIpt_btn {
     //margin-right: 300px;

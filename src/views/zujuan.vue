@@ -69,7 +69,7 @@
             @click="handleClose">
             <el-icon
               class="el-icon--close"
-              style="position: absolute; top: 0; right: 10px"
+              style="position: absolute;color: black; top: 0; right: 10px"
               >×</el-icon
             >
           </el-button>
@@ -181,7 +181,14 @@
               type="primary"
               class="documentIpt_btn"
               @click="generateQuestions"
-              >生成题目</el-button
+              >组卷</el-button
+            >
+            <el-button
+              size="large"
+              type="primary"
+              class="documentIpt_btn"
+              @click="downloadPaper"
+              >下载</el-button
             >
             <!--            <el-button size="large" type="primary" class="documentIpt_btn" @click="goToSearchPage">返回</el-button>-->
           </div>
@@ -237,9 +244,9 @@ export default {
     const showSuccessMessage = ref(false);
 
     const questionsTypeOptions = reactive([
-      { value: "选择题", label: "选择题" },
-      { value: "填空题", label: "填空题" },
-      { value: "简答题", label: "简答题" },
+      { value: "choice", label: "选择题" },
+      { value: "fill", label: "填空题" },
+      { value: "answer", label: "简答题" },
     ]);
 
     const generateModeOptions = reactive([
@@ -248,9 +255,9 @@ export default {
     ]);
 
     const difficultyLevelOptions = reactive([
-      { value: "简单", label: "简单" },
-      { value: "中等", label: "中等" },
-      { value: "困难", label: "困难" },
+      { value: "easy", label: "简单" },
+      //{ value: "中等", label: "中等" },
+      { value: "difficulty", label: "困难" },
     ]);
 
     // 使用 ref 定义单个响应式变量
@@ -330,7 +337,6 @@ export default {
       bool.value = true;
       // fileContent.value = '';
     };
-    // console.log('让我看看',store.chap)
     jsonData.value = JSON.parse(store.chap);
     // 处理数据
     const chapters = computed(() => {
@@ -344,6 +350,17 @@ export default {
       row.expanded = !row.expanded;
     };
 
+    //下载组卷
+    const downloadPaper = () => {
+      const content = fileContent.value;
+      const blob = new Blob([content], { type: "text/plain" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "paper.txt";
+      a.click();
+      URL.revokeObjectURL(url);
+    };
     const selectedContent: Ref<uploadCon[]> = ref([]);
     // 选中取消选中
     const handleCheckboxChange = (
@@ -406,6 +423,7 @@ export default {
       choiceScore,
       fillScore,
       shortAnswerScore,
+      downloadPaper,
       inccc,
       deccc,
       incfc,
