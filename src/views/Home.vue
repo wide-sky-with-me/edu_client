@@ -65,10 +65,19 @@
             <p>自动出题</p>
             <p>根据上传知识点自动出题</p>
           </el-card>
+          <el-card @click="toReport">
+            <div>
+              <el-icon
+                color="#b49c73"
+                size="50px">
+                <DocumentCopy />
+              </el-icon>
+            </div>
+            <p>报告生成</p>
+            <p>自动阅卷和分析报告生成</p>
+          </el-card>
         </el-space>
       </div>
-
-      <div id="bottom"></div>
     </el-main>
   </el-container>
 </template>
@@ -95,18 +104,14 @@ export default {
     const router = useRouter();
     const { useStore } = require("../store/index.js");
     const store = useStore();
-
-    const routerJump = function () {
-      router.push({
-        name: "DocumentIpt",
-      });
-    };
     // 跳转类案检索
 
     const toAccusationPrediction = function () {
       store.text = "文档知识点抽取 ";
       store.flagNumSignItem = 1;
-      routerJump();
+      router.push({
+        name: "DocumentIpt",
+      });
     };
     const toRecommendedArticleOfLaw = function () {
       store.text = "自动化构建图谱";
@@ -160,13 +165,16 @@ export default {
         name: "page2",
       });
     };
-    // const toFeatureExtraction = function () {
-    //   store.text = '要素抽取'
-    //   store.flagNumSignItem = 4
-    //   routerJump()
-    // }
+    const toReport = function () {
+      store.text = "报告生成";
+      store.flagNumSignItem = 4;
+      router.push({
+        name: "Report",
+      });
+    };
     return {
       toCaseSearch,
+      toReport,
       toAccusationPrediction,
       toRecommendedArticleOfLaw,
     };
@@ -246,10 +254,10 @@ export default {
 .home_main {
   position: relative; /* 或者 absolute，取决于你的需求 */
   z-index: 2;
+  overflow: hidden;
 
   .main_up,
   .main_bottom {
-    height: 500px;
     position: relative;
   }
   .main_up {
@@ -261,6 +269,11 @@ export default {
     //  margin-bottom: 20px;
     //  color: #b49c73;
     //}
+    /deep/ .el-space__item {
+      :hover {
+        cursor: pointer;
+      }
+    }
     .el-card {
       width: 300px;
       height: 300px;
